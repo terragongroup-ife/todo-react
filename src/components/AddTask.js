@@ -28,10 +28,8 @@ class AddTask extends React.Component{
         
     }
     render(){
-        console.log("props: ", this.props)
-
-
-        return (
+    
+    return (
       
             <div className="container">
                 <h1>Todo Application (Beta) </h1>
