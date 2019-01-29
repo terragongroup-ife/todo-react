@@ -17,17 +17,22 @@ class AddTask extends React.Component{
     }
 
     createTask(){
-        if(this.state.title != '' && this.state.content!=''){
+        if(this.state.title !== '' && this.state.content!== ''){
         const action = createAddTask(this.state.title, this.state.content)
         store.dispatch(action);
         }
+        this.setState({
+            title: '',
+            content : ''
+        })  
         
     }
     render(){
+        console.log("props: ", this.props)
 
 
         return (
-
+      
             <div className="container">
                 <h1>Todo Application (Beta) </h1>
                 <div className="form-group">
@@ -55,15 +60,20 @@ class AddTask extends React.Component{
 
                 <div className="container"></div>
                 <br/>
-                <ShowTask taskList={store.getState()} />
+                <ShowTask taskList={this.props.taskList} />
             </div>
         )
     }
 }
 
 
-const mapStateToProps = (state) => ({
-    ...state
-})
+function mapStateToProps(state){
+    return {
+        taskList : state, 
+    }
+}
+// const mapStateToProps = (state) => ({
+//     ...state
+// })
 
 export default connect(mapStateToProps) (AddTask);
