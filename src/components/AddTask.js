@@ -17,9 +17,11 @@ class AddTask extends React.Component{
     }
 
     createTask(){
-        console.log("create task ", this.state)
+        if(this.state.title != '' && this.state.content!=''){
         const action = createAddTask(this.state.title, this.state.content)
         store.dispatch(action);
+        }
+        
     }
     render(){
 
